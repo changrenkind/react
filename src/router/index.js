@@ -30,10 +30,16 @@ class AppRouter extends React.Component {
             <li><Link to="/list">blog</Link></li>
           </ul>
           {/* Switch只显示一个组件。加exact表示精确匹配/。如果不加exact，/xxx也会匹配/。  */}
+          {/* 如果一个<Route>没有path属性，他的组件对应内容将一直被渲染出来。 */}
           <Switch>
             {/* exact */}
-            <Route path="/home" component={Home} />
-            <Route exact path="/list" component={List} />
+            <Route path="/" component={Home}>
+              {/* 当 url 为/时渲染 Dashboard */}
+              {/* <IndexRoute component={Dashboard} /> */}
+              <Route path="/home" component={Home} />
+              <Route exact path="/list" component={List} />
+              {/* <Route component={Home} /> */}
+            </Route>
           </Switch>
         </div>
       </Router>

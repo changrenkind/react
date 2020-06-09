@@ -1,17 +1,40 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Button } from 'antd';
 
 import "./home.less";
 import sh from "@/assets/sh.jpg";
 
-export default class Home extends Component {
+class Home extends Component {
   render() {
+    const props = this.props;
     return (
       <div className="text">
         homeIndex
         <Button type="primary">Primary</Button>
         <img src={sh} alt="" />
+        <div>The count is {props.count}</div>
+        <div>The text is {props.text}</div>
+        <Button onClick={props.increment}>increment</Button>
+        <Button onClick={props.incrementAsync}>incrementAsync</Button>
+        <Button onClick={props.addText}>addText</Button>
       </div>
     );
   }
 }
+const mapState = state => ({
+    count: state.count,
+  text: state.text
+});
+// 解构赋值
+// const mapDispatch = ({ count: { increment, incrementAsync } }) => ({
+//   increment: () => increment(1),
+//   incrementAsync: () => incrementAsync(1)
+// });
+
+const mapDispatch = dispatch => ({
+  increment: () => dispatch.count.increment(1),
+  incrementAsync: () => dispatch.count.incrementAsync(1),
+  addText: () => dispatch.text.addText('加-')
+});
+export default connect(mapState, mapDispatch)(Home);

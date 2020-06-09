@@ -5,7 +5,9 @@ const TerserJSPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 提取css
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // 压缩css
 const devMode = process.env.NODE_ENV !== 'production';
-console.log(process.env.NODE_ENV);
+const happypack = require('happypack');
+const os = require('os');
+const happyThreadPool = happypack.ThreadPool({ size: os.cpus().length });
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -38,9 +40,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,//一个匹配loaders所处理的文件的拓展名的正则表达式，这里用来匹配js和jsx文件（必须）
-        exclude: /node_modules/,//屏蔽不需要处理的文件（文件夹）（可选）
-        loader: 'babel-loader',//loader的名称（必须）
+        test: /\.(js|jsx)$/, // 一个匹配loaders所处理的文件的拓展名的正则表达式，这里用来匹配js和jsx文件（必须）
+        exclude: /node_modules/, // 屏蔽不需要处理的文件（文件夹）（可选）
+        use: [
+          {
+            loader: 'happypack/loader?id=babelLoader'
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -50,7 +56,8 @@ module.exports = {
           },
           {
             loader: 'css-loader',  // 转换css
-          }
+          },
+          'postcss-loader'
         ]
       },
       {
@@ -62,6 +69,7 @@ module.exports = {
           {
             loader: 'css-loader',
           },
+          'postcss-loader',
           {
             loader: 'less-loader', // 编译 Less -> CSS
           },
@@ -148,6 +156,14 @@ module.exports = {
         ignore: ['.*']
       }
     ]),
+
+    new happypack({
+      id: 'babelLoader',
+      use: ['babel-loader', 'eslint-loader'],
+      //共享进程池
+      threadPool: happyThreadPool,
+    }),
+
     new MiniCssExtractPlugin({
       // filename: devMode ? '[name].css' : '[name].[hash].css',
       // chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
