@@ -5,17 +5,32 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --progress --config config/webpack.dev.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --progress --config config/webpack.dev.config.js",
     "build": "cross-env NODE_ENV=production webpack --progress --config config/webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{jsx,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "airbnb": "^0.0.2",
     "autoprefixer": "^9.8.0",
     "axios": "^0.19.2",
@@ -59,10 +74,5 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.5"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
-    }
   }
 }

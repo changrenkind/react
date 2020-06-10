@@ -3,13 +3,13 @@ export const count = {
   reducers: {
     increment(state, payload) {
       console.log(state, payload);
-      return state + payload
+      return state + payload;
     }
   },
   effects: dispatch => ({
-    async incrementAsync(payload, rootState) {
+    async incrementAsync(payload) {
       await new Promise(reslove => setTimeout(reslove, 1000));
       dispatch.count.increment(payload);
     }
   })
-}
+};

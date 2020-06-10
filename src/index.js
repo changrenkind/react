@@ -1,20 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Provider } from 'react-redux';
 
-import store from './store';
-import AppRouter from './router';
-
-
-
-class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <AppRouter />
-      </Provider>
-    )
-  }
-}
+import App from './App.js';
 
 ReactDom.render(<App />, document.getElementById('app'));
+
+// 热替换代码
+if (module.hot) {
+  module.hot.accept();
+}

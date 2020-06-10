@@ -7,9 +7,9 @@ export const text = {
     }
   },
   effects: dispatch => ({
-    async addTextAsync(payload, rootState) {
+    async addTextAsync(payload) {
       await new Promise(reslove => setTimeout(reslove, 1000));
       dispatch.count.addText(payload);
     }
   })
-}
+};

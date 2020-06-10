@@ -1,19 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'antd';
 
-import "./home.less";
-import sh from "@/assets/sh.jpg";
+import './home.less';
+import sh from '@/assets/sh.jpg';
 
 class Home extends Component {
   render() {
     const props = this.props;
     return (
       <div className="text">
-        homeIndex
         <Button type="primary">Primary</Button>
         <img src={sh} alt="" />
-        <div>The count is {props.count}</div>
+        <div>The count aavv22 {props.count}</div>
         <div>The text is {props.text}</div>
         <Button onClick={props.increment}>increment</Button>
         <Button onClick={props.incrementAsync}>incrementAsync</Button>
@@ -23,9 +22,10 @@ class Home extends Component {
   }
 }
 const mapState = state => ({
-    count: state.count,
+  count: state.count,
   text: state.text
 });
+
 // 解构赋值
 // const mapDispatch = ({ count: { increment, incrementAsync } }) => ({
 //   increment: () => increment(1),

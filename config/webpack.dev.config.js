@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const webpackMerge = require("webpack-merge");
 const baseWebpackConfig = require("./webpack.base.config");
 const utils = require("./utils");
@@ -8,6 +9,8 @@ module.exports = webpackMerge(baseWebpackConfig, {
   mode: 'development',
   // 插件
   plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: utils.resolve('/dist/index.html'), // html模板的生成路径
       template: 'index.html',//html模板
@@ -18,6 +21,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
   devServer: {
     historyApiFallback: true, // 当找不到路径的时候，默认加载index.html文件
     hot: true,
+    // hotOnly: true,
     contentBase: false, // 告诉服务器从哪里提供内容。只有在你想要提供静态文件时才需要
     compress: true, // 一切服务都启用gzip 压缩：
     port: "8888", // 指定端口

@@ -7,7 +7,9 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended", //所有在规则页面被标记为“✔️”的规则将会默认开启
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        // 启用 eslint-plugin-prettier ，并将 prettier 错误显示为 eslint 错误。确保这始终是扩展数组中的最后一个配置。
+        'plugin:prettier/recommended',
     ],
     // 设置全局变量
     "globals": {
@@ -44,12 +46,16 @@ module.exports = {
         'no-alert': 'error', // 禁用 alert
 
         indent: ['error', 2, { SwitchCase: 1 }], // 强制使用两个空格作为缩进
-        quotes: ['error', 'single'], //强制使用单引号
-        // semi: ['error', 'never'], //强制不使用分号结尾
-        'comma-dangle': ['error', 'always-multiline'], // 逗号结束
+        quotes: ['error', 'single'], // 强制使用单引号
+        // semi: ['error', 'never'], // 强制不使用分号结尾
+        'comma-dangle': ['error', 'never'], // 逗号结束
         'no-param-reassign': 'error', // 禁止对 function 的参数进行重新赋值
         'jsx-quotes': ['error', 'prefer-double'], // 强制所有 JSX 属性值使用双引号。
         'prettier/prettier': 'error', // prettier
+        'no-dupe-args': 2, //函数参数不能重复
+        'no-unused-vars': [2, { vars: 'all', args: 'after-used' }], // 不能有声明后未被使用的变量或参数
+        "space-before-function-paren": [0, "always"],  // 函数名后面没有空格
+        'no-multiple-empty-lines': [1, { max: 2 }], // 空行最多不能超过2行
         'prefer-rest-params': 0,
 
         'react/display-name': 0,
