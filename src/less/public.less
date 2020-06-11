@@ -1,0 +1,293 @@
+@charset "utf-8";
+
+* {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+i {
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  border: 0 none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: #333342;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  overflow: hidden;
+  min-width: 1366px;
+  overflow: auto;
+}
+
+.header {
+  background: #333342;
+  padding: 0 40px;
+}
+
+.main-body {
+  background: rgba(248, 248, 248, 1);
+  border-radius: 20px 20px 0px 0px;
+  overflow: hidden;
+}
+
+.aside-left {
+  background: #FFFFFF;
+  box-shadow: 2px 0px 8px 0px rgba(30, 30, 37, 0.08);
+}
+
+// 自定义滚动条
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; // background-color: #e9ecef;
+}
+
+::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  border-radius: 0; //background-color: #e9ecef;
+  background-color: #f5f6f9;
+  color: transparent;
+  filter: alpha(opacity=0);
+}
+
+::-webkit-scrollbar-thumb {
+  /*width: 10px;*/
+  height: 20px;
+  border-radius: 10px; // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: transparent;
+  color: transparent;
+  background-color: #bcbfcc;
+}
+
+// 取消数字框上下箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.el-input__inner,
+.el-textarea__inner {
+  border-radius: 2px;
+  color: #000;
+  border: 1px solid #e6e6e6;
+}
+
+.el-form-item__label {
+  color: #000;
+  padding: 0 15px 0 0;
+}
+
+
+.btn-box {
+  padding-top: 22px;
+  background: #fff;
+  border-bottom: 15px solid #f5f6f9;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 5px solid #fc3239;
+  }
+}
+
+.search-box {
+  padding: 22px 30px 0;
+  border-bottom: 1px solid #f2f2f2;
+
+  .btn {
+    text-align: center;
+  }
+
+  .btn,
+  .btn-right,
+  .btn-left {
+    margin-bottom: 22px;
+  }
+
+  .btn-right {
+    text-align: right;
+  }
+
+  .btn-left {
+
+    text-align: left;
+  }
+}
+.main-container{
+  position: relative;
+}
+// 日期控件全局调整
+.el-date-editor .el-range-separator {
+  padding: 0 0;
+  width: 6%;
+
+}
+
+.el-date-editor .el-range__close-icon {
+  width: 19px;
+}
+
+.el-range-editor.el-input__inner {
+  width: 100%;
+  padding: 3px 0px 3px 10px;
+}
+
+.el-select {
+  width: 100%;
+}
+
+.mainBody {
+  box-shadow: 0px 2px 8px 0px rgba(30, 30, 37, 0.08);
+}
+
+// 复选框
+.el-checkbox__input {
+  .el-checkbox__inner {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  &.is-checked .el-checkbox__inner,
+  &.is-indeterminate .el-checkbox__inner {
+    border-color: #3678D8;
+    background-color: #3678D8;
+  }
+
+  &.is-checked+.el-checkbox__label {
+    color: inherit;
+  }
+}
+
+.el-checkbox__inner::after {
+  top: 0;
+  left: 4px;
+  height: 8px;
+  width: 5px;
+  border-width: 2px;
+}
+
+// 单选框
+.el-radio__input {
+  .el-radio__inner {
+    width: 16px;
+    height: 16px;
+  }
+
+  &.is-checked .el-radio__inner {
+    border-color: #3678D8;
+    background-color: #ffffff;
+  }
+
+  &.is-checked+.el-radio__label {
+    color: inherit;
+  }
+}
+
+.el-radio__inner::after {
+  width: 10px;
+  height: 10px;
+  background-color: #3678D8;
+}
+
+// switch开关
+.el-switch__core::after {
+  box-shadow: 0px 2px 8px 0px rgba(30, 30, 37, 0.18);
+}
+
+.forget {
+  .el-input-group__prepend {
+    font-size: 25px;
+  }
+
+  .el-input-group__prepend,
+  .el-input__inner {
+    height: 50px;
+  }
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.curson {
+  cursor: pointer;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfloat:after,
+.clearfloat:before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.el-submenu .el-menu-item {
+  padding: 0 20px;
+  min-width: 143px;
+}
+
+// 底部版本信息的样式
+.copyright {
+  display: block;
+  color: #999999;
+  font-size: 12px;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 50px;
+}
+
+.el-dropdown-menu {
+  width: 110px;
+}
+
+// @import './table.less';
+// @import './page.less';
+// @import './detail.less';
+// @import './form.less';
+// @import './dialog.less';
+// @import './button.less';
+// @import './inputSelect.less';
+// @import './menu.less';
+// @import './message.less';

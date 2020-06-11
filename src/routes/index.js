@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 // import { HashRouter as Router, Switch, Link, Route } from 'react-router-dom';
 
-import HomeLayout from '../containers/Home.jsx';
+import HomeLayout from '../containers/HomeLayout.jsx';
 const HomeComponent = React.lazy(() => import(/* webpackChunkName: "HomeComponent" */ '../views/home'));
 const ListComponent = React.lazy(() => import(/* webpackChunkName: "ListComponent" */ '../views/list'));
 

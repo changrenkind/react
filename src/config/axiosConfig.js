@@ -1,4 +1,4 @@
-import axios from axios;
+import axios from 'axios';
 import QS from 'qs';
 
 /**
@@ -30,20 +30,23 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
  * 或者post请求的时候，我们需要序列化我们提交的数据。
  * 这时候，我们可以在请求被发送之前进行一个拦截，从而进行我们想要的操作。
  */
-instance.interceptors.request.use((config) => {
-  const token = store.state.token;
-  token && (config.headers.Authorization = token);
-  return config;
-}, error => {
-  return Promise.error(error);
-});
+// instance.interceptors.request.use(
+//   config => {
+//     const token = store.state.token;
+//     token && (config.headers.Authorization = token);
+//     return config;
+//   },
+//   error => {
+//     return Promise.error(error);
+//   }
+// );
 
 /**
  * 响应拦截器
  */
 instance.interceptors.response.use(
   // 请求成功
-  res => res.status === 200 ? Promise.resolve(res) : Promise.reject(res),
+  res => (res.status === 200 ? Promise.resolve(res) : Promise.reject(res)),
   // 请求失败
   error => {
     if (error.response.status) {
@@ -58,7 +61,7 @@ instance.interceptors.response.use(
     }
     return Promise.reject(error.response);
   }
-)
+);
 
 /**
  * get方法，对应get请求
@@ -67,27 +70,31 @@ instance.interceptors.response.use(
  */
 export function get(url, params) {
   return new Promise((reslove, reject) => {
-    axios.get(url, { params: params }).then(res => {
-      reslove(res.data);
-    }).catch(err => {
-      reject(err.data);
-    })
-  })
+    axios
+      .get(url, { params: params })
+      .then(res => {
+        reslove(res.data);
+      })
+      .catch(err => {
+        reject(err.data);
+      });
+  });
 }
 
-/** 
- * post方法，对应post请求 
- * @param {String} url [请求的url地址] 
- * @param {Object} params [请求时携带的参数] 
+/**
+ * post方法，对应post请求
+ * @param {String} url [请求的url地址]
+ * @param {Object} params [请求时携带的参数]
  */
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    axios.post(url, QS.stringify(params))
+    axios
+      .post(url, QS.stringify(params))
       .then(res => {
         resolve(res.data);
       })
       .catch(err => {
-        reject(err.data)
-      })
+        reject(err.data);
+      });
   });
 }

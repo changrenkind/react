@@ -26,14 +26,15 @@ module.exports = {
     publicPath: "/" // 打包后的资源的访问路径前缀
   },
   resolve: {
-    extensions: ['.js', '.json', 'jsx'], // 解析扩展。（当我们通过路导入文件，找不到改文件时，会尝试加入这些后缀继续寻找文件）
+    extensions: ['.js', '.json', '.jsx'], // 解析扩展。（当我们通过路导入文件，找不到改文件时，会尝试加入这些后缀继续寻找文件）
     modules: [
       resolve('src'),
       resolve('node_modules'),
       resolve('build'),
     ],
     alias: {
-      '@': resolve('src') // 在项目中使用@符号代替src路径，导入文件路径更方便
+      '@': resolve('src'), // 在项目中使用@符号代替src路径，导入文件路径更方便
+      'static': resolve('static') // 在项目中使用@符号代替src路径，导入文件路径更方便
     }
   },
   // 模块

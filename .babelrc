@@ -19,5 +19,10 @@
       "style": "css" // `style: true` 会加载 less 文件
     }]
     
-  ]
+  ],
+  "env": {
+    "development": {
+        "plugins": ["react-hot-loader/babel"]
+    }
+  }
 }

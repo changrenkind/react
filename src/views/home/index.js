@@ -12,11 +12,11 @@ class Home extends Component {
       <div className="text">
         <Button type="primary">Primary</Button>
         <img src={sh} alt="" />
-        <div>The count aavv22 {props.count}</div>
+        <div>The ab11 {props.count}</div>
         <div>The text is {props.text}</div>
-        <Button onClick={props.increment}>increment</Button>
+        <Button onClick={props.increment}>increment12</Button>
         <Button onClick={props.incrementAsync}>incrementAsync</Button>
-        <Button onClick={props.addText}>addText</Button>
+        <Button onClick={props.addText}>a11 </Button>
       </div>
     );
   }

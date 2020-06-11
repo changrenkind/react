@@ -1,0 +1,67 @@
+ .formData {
+   .el-form-item {
+     margin-bottom: 16px;
+   }
+
+   .el-input__inner {
+     height: 30px;
+     line-height: 30px;
+   }
+
+   .el-form-item__label,
+   .el-form-item__content,
+   .el-input__icon,
+   .el-cascader {
+     line-height: 30px;
+   }
+
+   .el-form-item__label {
+     color: #333333;
+     font-weight: bold;
+     padding: 0 10px 0 0;
+   }
+
+   .el-switch.is-checked .el-switch__core {
+     border-color: #3678D8;
+     background-color: #3678D8;
+   }
+
+   .el-input-number__decrease,
+   .el-input-number__increase {
+     height: 29px;
+   }
+
+   // 表单label不想要粗体
+   .noBold {
+     .el-form-item__label {
+       font-weight: 500;
+     }
+   }
+
+   // 密码框
+   .passWord {
+     [type=text]+.el-input__suffix {
+       i {
+         background: url('../../static/images/apolloUser/apolloOpenEye.svg') no-repeat center;
+
+         &:before {
+           content: '';
+         }
+       }
+
+       i:before {
+         content: ''
+       }
+     }
+
+     [type=password]+.el-input__suffix {
+       i {
+         background: url('../../static/images/apolloUser/apolloCloseEye.svg') no-repeat center;
+
+         &:before {
+           content: '';
+         }
+       }
+     }
+   }
+ }
